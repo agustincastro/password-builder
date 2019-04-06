@@ -1,0 +1,17 @@
+{
+  "name": "password-builder",
+  "version": "1.0.0",
+  "description": "Node module for generating randomized passwords",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "password",
+    "random",
+    "pass",
+    "generator"
+  ],
+  "author": "Agustin Castro",
+  "license": "MIT"
+}
