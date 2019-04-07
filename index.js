@@ -29,33 +29,40 @@ class PasswordBuilder {
     }
 
     setLength(length) {
+        // TODO: check validity
         this.length = length;
         return this;
     }
 
-    letters(letters) {
-        this.letters = letters;
-        if (letters.length === 0) {
-            this.conditions[letters] = true;
+    setLetters(letters) {
+        if (letters.length === 0 || !letters) {
+            this.conditions[this.charType.LETTER] = true;
             this.conditionsToCheck -= 1;
+            this.letters = "";
+        }else{
+            this.letters = letters;
         }
         return this;
     }
 
-    numbers(numbers) {
-        this.numbers = numbers;
-        if (numbers.length === 0) {
-            this.conditions[numbers] = true;
+    setNumbers(numbers) {
+        if (numbers.length === 0 || !numbers) {
+            this.conditions[this.charType.NUMBER] = true;
             this.conditionsToCheck -= 1;
+            this.numbers = ""
+        }else{
+            this.numbers = numbers;
         }
         return this;
     }
 
-    symbols(symbols) {
-        this.symbols = symbols;
-        if (symbols.length === 0) {
-            this.conditions[symbols] = true;
+    setSymbols(symbols) {
+        if (symbols.length === 0 || ! symbols) {
+            this.conditions[this.charType.SYMBOL] = true;
             this.conditionsToCheck -= 1;
+            this.symbols = "";
+        }else{
+            this.symbols = symbols;
         }
         return this;
     }
@@ -120,7 +127,8 @@ class PasswordBuilder {
 
 const pb = new PasswordBuilder();
 
-const test = pb.setLength(10).generate();
+const test = pb.setLength(10).setLetters("ABCDE").setNumbers(false).setSymbols(false).generate();
 
 console.log(test);
 
+module.exports = new PasswordBuilder();
